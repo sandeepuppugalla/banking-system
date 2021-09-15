@@ -24,7 +24,9 @@ public class CustomerController {
 		return new ResponseEntity<>("Customer added succesfully",HttpStatus.OK);
 	}
 	
-	
-	
-
+	@GetMapping("/getAllCustomers")
+	public ResponseEntity<Object> getAllCustomers()
+	{	
+		return new ResponseEntity<>(customerService.getAllCustomers(),HttpStatus.OK);
+	}
 }

@@ -13,10 +13,12 @@ public class Customer {
 	String customerAddress;
 	long phoneNo;
 	long lamdlineNo;
-	long pinCode;	
-	
+	long pinCode;
+
+		
+
 	public Customer(int customerId, String customerName, String customerAddress, long phoneNo, long lamdlineNo,
-			long pinCode) {
+			long pinCode, AccountType accountType) {
 		super();
 		this.customerId = customerId;
 		this.customerName = customerName;
@@ -24,15 +26,23 @@ public class Customer {
 		this.phoneNo = phoneNo;
 		this.lamdlineNo = lamdlineNo;
 		this.pinCode = pinCode;
-	
+		this.accountType = accountType;
 	}
 	
 	@Enumerated(EnumType.STRING)
-	private AccountType AccountType;
-	
+	private AccountType accountType; 
+
+
+	public AccountType getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(AccountType accountType) {
+		this.accountType = accountType;
+	}
 
 	
-
+	
 	public Customer() {
 		super();
 	}
@@ -89,18 +99,13 @@ public class Customer {
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerAddress="
 				+ customerAddress + ", phoneNo=" + phoneNo + ", lamdlineNo=" + lamdlineNo + ", pinCode=" + pinCode
-				+ ", AccountType=" + AccountType + ", getCustomerId()=" + getCustomerId() + ", getCustomerName()="
-				+ getCustomerName() + ", getCustomerAddress()=" + getCustomerAddress() + ", getPhoneNo()="
-				+ getPhoneNo() + ", getLamdlineNo()=" + getLamdlineNo() + ", getPinCode()=" + getPinCode()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ ", accountType=" + accountType + ", getAccountType()=" + getAccountType() + ", getCustomerId()="
+				+ getCustomerId() + ", getCustomerName()=" + getCustomerName() + ", getCustomerAddress()="
+				+ getCustomerAddress() + ", getPhoneNo()=" + getPhoneNo() + ", getLamdlineNo()=" + getLamdlineNo()
+				+ ", getPinCode()=" + getPinCode() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
 	}
 
 	
-
-	
-	
-	
-	
-	
 }
+
