@@ -9,7 +9,9 @@ import com.cg.entities.Customer;
 @Service
 public interface ICustomerService {
 
-	public void addCustomer(Customer customer);
+	Customer saveCustomer(Customer customer);
 	List<Customer> getAllCustomers();
-	
+	Customer getCustomerById(int customerId);
+	Customer updateCustomer(Customer customer);
+	void deleteCustomer(Customer customer);
 }

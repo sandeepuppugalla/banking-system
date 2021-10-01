@@ -1,111 +1,58 @@
 package com.cg.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+@Data  
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
+@Table
 public class Customer {
 	@Id
-	int customerId;
-	String customerName;
-	String customerAddress;
-	long phoneNo;
-	long lamdlineNo;
-	long pinCode;
-
-		
-
-	public Customer(int customerId, String customerName, String customerAddress, long phoneNo, long lamdlineNo,
-			long pinCode, AccountType accountType) {
-		super();
-		this.customerId = customerId;
-		this.customerName = customerName;
-		this.customerAddress = customerAddress;
-		this.phoneNo = phoneNo;
-		this.lamdlineNo = lamdlineNo;
-		this.pinCode = pinCode;
-		this.accountType = accountType;
-	}
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="customer_Id")
+	private int customerId;
 	
+	@Column(name="cust_name",nullable = false)
+	@Size(min=2, message ="customer name should have atleast 2 characters")
+	@NotEmpty
+	private String customerName;
+	
+	@NotEmpty
+	@Column(name="cust_add",nullable = false)
+	private String customerAddress;
+	
+	@NotEmpty
+	@Size(max=10,message ="customer phone number should have  10 characters")
+	@Column(name="cust_phoneNo",nullable = false)
+	private String phoneNo;
+	
+	@NotNull
+	@Column(name="cust_landLine",nullable = false)
+	private Long landlineNo;
+	
+	@NotNull
+	@Column(name="cust_pinCode")
+	private Long pinCode;
+	
+	@NotNull
 	@Enumerated(EnumType.STRING)
-	private AccountType accountType; 
+	private  AccountType type;
 
-
-	public AccountType getAccountType() {
-		return accountType;
-	}
-
-	public void setAccountType(AccountType accountType) {
-		this.accountType = accountType;
-	}
-
-	
-	
-	public Customer() {
-		super();
-	}
-
-	public int getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
-	}
-
-	public String getCustomerName() {
-		return customerName;
-	}
-
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
-
-	public String getCustomerAddress() {
-		return customerAddress;
-	}
-
-	public void setCustomerAddress(String customerAddress) {
-		this.customerAddress = customerAddress;
-	}
-
-	public long getPhoneNo() {
-		return phoneNo;
-	}
-
-	public void setPhoneNo(long phoneNo) {
-		this.phoneNo = phoneNo;
-	}
-
-	public long getLamdlineNo() {
-		return lamdlineNo;
-	}
-
-	public void setLamdlineNo(long lamdlineNo) {
-		this.lamdlineNo = lamdlineNo;
-	}
-
-	public long getPinCode() {
-		return pinCode;
-	}
-
-	public void setPinCode(long pinCode) {
-		this.pinCode = pinCode;
-	}
-
-	@Override
-	public String toString() {
-		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerAddress="
-				+ customerAddress + ", phoneNo=" + phoneNo + ", lamdlineNo=" + lamdlineNo + ", pinCode=" + pinCode
-				+ ", accountType=" + accountType + ", getAccountType()=" + getAccountType() + ", getCustomerId()="
-				+ getCustomerId() + ", getCustomerName()=" + getCustomerName() + ", getCustomerAddress()="
-				+ getCustomerAddress() + ", getPhoneNo()=" + getPhoneNo() + ", getLamdlineNo()=" + getLamdlineNo()
-				+ ", getPinCode()=" + getPinCode() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
-	}
-
-	
 }
 
